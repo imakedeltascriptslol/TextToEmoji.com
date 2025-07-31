@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Letter to Emoji Translator</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+  textarea, input { width: 100%; font-size: 1.2em; padding: 10px; margin: 10px 0; }
+  #output { font-size: 2em; min-height: 50px; background: #fff; padding: 10px; border-radius: 8px; }
+</style>
+</head>
+<body>
+
+<h1>Letter to Emoji Translator</h1>
+<textarea id="inputText" rows="4" placeholder="Type letters here..."></textarea>
+<div id="output"></div>
+
+<script>
+  const emojiMap = {
+    a: "🍎", b: "🐝", c: "🌜", d: "🦌", e: "🦅", f: "🍟", g: "🦒",
+    h: "🧊", i: "👀", j: "🦘", k: "🔪", l: "🍋", m: "🌝", n: "🎶",
+    o: "🐙", p: "🥞", q: "👸", r: "🤖", s: "🐍", t: "🌴", u: "☂️",
+    v: "🎻", w: "🌊", x: "❌", y: "🌱", z: "⚡"
+  };
+
+  const input = document.getElementById("inputText");
+  const output = document.getElementById("output");
+
+  input.addEventListener("input", () => {
+    const text = input.value.toLowerCase();
+    let result = "";
+
+    for (let char of text) {
+      if (emojiMap[char]) {
+        result += emojiMap[char];
+      } else if (char === " ") {
+        result += " ";
+      } else {
+        result += char; // keep punctuation or numbers as is
+      }
+    }
+
+    output.textContent = result;
+  });
+</script>
+
+</body>
+</html>
